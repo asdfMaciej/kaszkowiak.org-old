@@ -1,0 +1,279 @@
+* {
+margin: 0;
+padding: 0;
+}
+@-ms-viewport {
+	width: device-width;
+}
+body {
+	font-family: "Montserrat", sans-serif;
+	
+}
+
+div#header {
+	height: 50vh; 
+	width: 100%;
+	background-image: url(../img/kregielnia-brzesko.jpg);
+	background-position: center top;
+	text-align: center;
+}
+
+h2 {
+	font-weight: 600;
+	font-size: 4vw;
+	padding-bottom: 4vh;
+	padding-top: 4vh;
+	text-shadow: 0px 0px 30px #000;
+	color: #FFF;
+}
+div#header > h1 {
+	color: #FFF;
+	font-weight: 800;
+	font-size: 6vw;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 50%;
+	text-shadow: 0px 0px 30px #000;
+	transform: translateY(-50%);
+}
+div.middle {
+	text-align: center;
+}
+p {
+	font-size: 2vw;
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	padding-left: 4vw;
+	padding-right: 4vw;
+}
+table, td {
+	font-size: 2vw;
+}
+ul.bigger > li {
+	font-size: 2vw;
+}
+ol.bigger > li {
+  	font-size: 2vw;
+  }
+ul.bigger {
+	margin-left: 4vw;
+}
+ol.bigger {
+	margin-left: 4vw;
+}
+td, tr {
+	padding: 0.25vw;
+}
+table {
+	margin-right: 0.25vw; /* float: left; */ 
+	padding: 2vw;  
+	padding-right: 10vw;
+}
+div.content {
+}
+div.white_content {
+	max-width: 1200px;
+	margin: auto;
+	background-color: #FFF;
+	padding-bottom: 5vh;
+}
+
+div#about_kregle {
+	width: 100%;
+	background-image: url(../img/bg.jpg);
+	 background-attachment: fixed !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+div#where_kregle {
+	width: 100%;
+	background-image: url(../img/budynek.jpg);
+	 background-attachment: fixed !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+div#zawody {
+	width: 100%;
+	background-image: url(../img/gostyn.jpg);
+	 background-attachment: fixed !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+div#odnosniki {
+	width: 100%;
+	background-image: url(../img/kegeln.jpg);
+	 background-attachment: fixed !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+div.white_bar {
+	width: 100%;
+	background-color: #FFF;
+	height: 6vh;
+}
+figcaption.normal {
+	font-size: 1.75vw;
+}
+figcaption.smaller {
+	font-size: 1.5vw;
+}
+div#href_linki {
+	width: 75vw;
+	margin: 0 auto;
+}
+div.r1200 {
+	max-width: 1200px;
+	margin: auto;
+}
+ div#scroll_guzik > svg {
+  	width: 60px; 
+  }
+
+@media screen and (min-width: 1200px) {
+  p {
+     font-size: 24px;
+  }
+  table, td {
+  	font-size: 24px;
+  }
+  ul.bigger > li {
+  	font-size: 24px;
+  }
+  ol.bigger > li {
+  	font-size: 24px;
+  }
+  figcaption.normal {
+  	font-size: 22px;
+  }
+  figcaption.smaller {
+  	font-size: 18px;
+  }
+  div#href_linki {
+  	width: 900px;
+  }
+  div#scroll_guzik > svg {
+  	width: 5vw;
+  }
+  table {
+  	padding-right: 130px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  p {
+     font-size: 14.4px;
+  }
+  table, td {
+  	font-size: 14.4px;
+  }
+  ul.bigger > li {
+  	font-size: 14.4px;
+  }
+  ol.bigger > li {
+  	font-size: 14.4px;
+  }
+  figcaption.normal {
+  	font-size: 13.2px;
+  }
+  figcaption.smaller {
+  	font-size: 10.8px;
+  }
+  div#scroll_guzik > svg {
+  	width: 36px;
+  }
+  table {
+  	padding-right: 130px;
+  }
+  h2 {
+  	font-size: 28.8px;
+  }
+}
+li {
+	padding: 0.5vw;
+	font-weight: 500;
+	font-size: 1.5vw;
+}
+
+div.flex_3 {
+	display: flex;
+	flex-wrap: wrap;
+}
+div.flex_3 > div {
+	flex-grow: 0;
+}
+div#stopa {
+	height: 100vh;
+	 width: 100%; 
+	 color: white;
+	 background: linear-gradient(
+    to bottom,
+    transparent, 
+    black
+  ); 
+}
+form > label {
+	font-size: 2.25vh;
+	font-weight: 800;
+	padding: 1vh;
+}
+form > div > label, form > div > span {
+	font-size: 2.25vh;
+	font-weight: 800;
+	padding: 1vh;
+}
+form > input, form > div > input {
+	height: 4vh;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: inherit;
+    margin-bottom:0.75vh;
+}
+form > textarea {
+	padding: 10px;
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: inherit;
+    margin-bottom:2vh;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+	width: 16px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #555;
+}
+
+@media (pointer:none), (pointer:coarse) {
+  #scroll_gostyn, #scroll_gostyn_2, #scroll_gostyn_3, #scroll_wronki {
+    display: none;
+  }
+}

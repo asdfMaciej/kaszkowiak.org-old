@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Responsywna strona</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato:900%7CPT+Serif" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			Budowanie responsywnej strony z Flexboxem
+		</div>
+		<div id="main">
+			<div id="body">
+				<p>
+					Flexbox pozwala na szybkie budowanie responsywnej strony internetowej. <br>Jest typem układu w kontenerze. <br>Na układ możemy wpływać atrybutami zarówno u rodzica, jak i u dzieci.<br>
+				</p><br>
+				<hr>
+				<h1>
+					Atrybuty rodzica:
+				</h1>
+
+					Aby skorzystać z flexboxa, najpierw kontenerowi zawierającemu dzieci musimy nadać atrybut:<img class="float-right m8" style="width: 400px" src="flex6.png" alt="Cel"><br>
+
+						<blockquote class="kod"><b>display: flex</b></blockquote>
+
+					Kontener z flexboxem pozwala na rozmieszczenie dzieci w kierunku jakim chcemy [niekoniecznie takim, w jakim są ustalone dzieci w HTMLu]:<br>
+						<blockquote class="kod"><b>flex-direction:</b> column (domyślnie) | row | column-reverse | row-reverse</blockquote>
+					
+					Aby dzieci przemieszczały się na następną linię w przypadku braku miejsca (zalecane), możemy nadać atrybut:<br>
+						<blockquote class="kod"><b>flex-wrap:</b> wrap lub domyślnie nowrap</blockquote>
+
+					Do wyrównywania dzieci na osi horyzontalnej używamy:
+						<blockquote class="kod"><b>justify-content:</b> flex-start | flex-end | center | space-between | space-around | space-evenly;</blockquote>
+					Natomiast na osi wertykalnej:
+						<blockquote class="kod"><b>align-items:</b> flex-start | flex-end | center | baseline | stretch;<br>
+					oraz <b>align-content:</b> flex-start | flex-end | center | space-between | space-around | stretch;</blockquote>
+
+					Align-items służy do wyrównywania dzieci znajdujących się na jednej linii, natomiast align-content wyrównuje poszczególne linie, gdy zostanie dodatkowe miejsce na osi Y.
+
+				<hr>
+				
+				<h1>
+					Atrybuty dziecka:
+				</h1>
+
+				Atrybut <b>order</b> [liczba całkowita] pozwala nam na ułożenia dzieci w dowolnej kolejności poprzez CSS.<br>
+
+				<b>Flex-grow</b> [liczba całkowita] ustala, czy dziecko może wykorzystać wolną przestrzeń, aby zwiększyć swoją szerokość. <br>
+
+				<b>Flex-shrink</b> [liczba całkowita] ustala, czy dziecko może się zmniejszyć, w przypadku braku wolnego miejsca.<br>
+				Natomiast <b>flex-basis</b> to domyślna szerokość dziecka, przed rozdzieleniem wolnego miejsca.<br><br>
+
+				Zazwyczaj powinniśmy korzystać z atrybutu <b>flex</b>, który łączy trzy w jednym:<br>
+				
+				<blockquote class="kod">
+					<b>flex:</b> flex-grow flex-shrink flex-basis
+					[domyślnie flex: none]
+				</blockquote>
+
+				<h3>Przykłady:</h3> <br>
+				Gdy dziecko ma zajmować co najmniej 400px szerokości lub więcej, używamy na nim:<br>
+				<blockquote class="kod">
+				flex: 1 0 400px
+				</blockquote>
+
+				Gdy dziecko ma zajmować 2 razy więcej szerokości od innych, ustawiamy mu:<br>
+				<blockquote class="kod">
+				flex: 2 1 auto;
+				</blockquote>
+				A innym dzieciom:<br>
+				<blockquote class="kod">
+				flex: 1 1 auto;
+				</blockquote>
+
+				Przejdźmy jednak do konkretnego przykładu, czyli typowego układu strony.<br>
+
+				<hr>
+				<h1>Budowanie działającego układu strony</h1>
+				<img src="flex3.png" style="width: 400px" class="float-right m8">
+				Div#rodzic jest tutaj rodzicem dla trzech divów – nagłówka, main oraz stopki. 
+Powinny się układać w kolejności kolumny [od góry do ołu]. Załóżmy, że strona powinna zajmować co najmniej cały ekran (100 vh – viewport height).<br>
+
+Najpierw pozbądźmy się wszystkich marginów, paddingów, itd. – to dobra praktyka:<br>
+<blockquote class="kod">
+* {<br>
+	margin: 0;<br>
+	padding: 0;<br>
+	border: 0;<br>
+	box-sizing: border-box;<br>
+}
+</blockquote>
+Następnie ustalamy css dla rodzica:<br>
+
+<blockquote class="kod">
+div#rodzic {<br>
+	display: flex;<br>
+	flex-direction: column;<br>
+	width: 100%;<br>
+	min-height: 100vh;<br>
+}
+</blockquote>
+<img src="flex4.png" style="width: 400px" class="float-right m8">
+Ok, załóżmy, że nagłówek ma być wysoki na 250px, tak samo jak stopka.<br>
+<blockquote class="kod">
+div#naglowek, div#stopka {<br>
+	flex: 0 0 250px;<br>
+	width: 100%;<br>
+}
+</blockquote>
+
+
+Dodajmy jeszcze do naszej strony sidebar. Będziemy musieli zmodyfikować srodkowy div, aby zawierał nasz pasek boczny.<br>
+
+Div#main stanie się wtedy dzieckiem div#rodzic, ale jednocześnie zostanie rodzicem dwóch elementów, div#tekst oraz div#sidebar. Są one ułożone w formie rowu.<br>
+<img src="flex5.png" style="width: 400px" class="float-right m8">
+<blockquote class="kod">
+	div#main {<br>
+	/* Atrybuty jako dziecka div#rodzic: */<br>
+	flex: 1 1;<br>
+	width: 100%;<br>
+	<br>
+	/* Atrybuty jako rodzic div#tekst i div#sidebar */<br>
+	display: flex;<br>
+	flex-direction: row;<br>
+}<br>
+<br>
+div#tekst {<br>
+	flex: 1 1 100%;<br>
+}<br>
+<br>
+div#sidebar {<br>
+	flex: 1 0 200px;<br>
+}
+</blockquote>
+
+Wynik całości powinien być jak na obrazku z prawej strony.<br>
+<img src="mobi1.png" style="width: 400px" class="float-right m8">
+<h1>Dostosowanie do komórek</h1>
+
+Przeglądarki mobilne często sprawiają, że strona wydaje się mała. Renderują stronę w wyższej rozdzielczości a następnie downscalują ją dla użytkownika. Sprawia to, że strona wygląda jak na pierwszym obrazku. Możemy to naprawić wstawiając jedną linijkę do tagu head:
+
+<blockquote class="kod">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</blockquote>
+
+Wymusza to podobny wygląd strony na wszystkich przeglądarkach.<br>
+
+Dodatkowo możemy zastosować tzw. <b>media query</b>. Jest to kod CSS, który wykona się po spełnieniu danego warunku - w tym przyadku wykona się, gdy <b>szerokość przeglądarki jest mniejsza od 500px</b>, albo inaczej - maksymalna szerokość to 500px.<br><br>
+
+<u>Co możemy zrobić, aby zamienić tą stronę na lepiej czytelną na komórkach?</u><br>
+<b>1. </b>Przenieść sidebar gdzie indziej - zajmuje on za dużo miejsca<br>
+<b>2. </b>Skrócić nagłówek i stopkę z 250px na 200px - j.w.<br><br>
+
+Do tego możemy konsekwentnie wykonać trzecią czynność: <br>
+<b>3. </b>Przenieść sidebar, aby znajdował się pod nagłówkiem.<br>
+W przeciwnym razie znajdzie się na dole strony [zgodnie z układem HTML].<br>
+
+<img src="struktura.png" style="width: 400px" class="float-right m8">
+<blockquote class="kod">
+@media only screen and (max-width: 500px) { <br><br>
+	div#main {<br>
+		flex-direction: column;<br>
+	}<br><br>
+	div#sidebar {<br>
+		order: -1;<br>
+		flex: 0 0 100px;<br>
+	}<br><br>
+	div#naglowek, div#stopka {<br>
+		flex: 0 0 200px;<br>
+	}<br><br>
+}
+</blockquote>
+
+<img src="mobi2.png" style="width: 400px" class="float-right m8">
+<b>flex-direction: column w div#main</b> sprawia, że <u>div#tekst</u> oraz <u>div#sidebar</u> zamiast znajdować się obok siebie, znajdują się pod sobą. <b>Punkt 1</b> wypełniony.<br><br>
+
+<b>flex: 0 0 200px w nagłówku i stopce</b> zmniejsza ich wysokość o 50px - poprzednio było 250px. <b>Punkt 2</b> wypełniony.<br><br>
+
+<b>order: -1 w div#sidebar</b> sprawia, że jest pierwszy w kolejności, czyli znajduje się teraz <u>przed div#tekst</u>. Do tego zmniejszamy jego wysokość. <b>Punkt 3</b> wypełniony.<br><br>
+
+Strona wygląda jak na załączonym obrazku na komórce, posiadając swój normalny layout w wersji komputerowej.
+<a href="przyklad.html"><h1>Zobacz w akcji</h1></a>
+<hr>
+Odnośniki:
+<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Atrybuty zaprezentowane w ładniejszej formie</a><br>
+Przykład: <a href="http://www.kaszkowiak.org/dwa/index.html">http://www.kaszkowiak.org/dwa/index.html</a>
+
+			</div>
+		</div>
+		<div id="footer">
+			<span class="p200">Maciej Kaszkowiak</span>
+		</div>
+	</div>
+</body>
+</html>

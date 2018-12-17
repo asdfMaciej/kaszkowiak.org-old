@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<title>Przykład</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+	word-break: break-all;
+}
+
+div#rodzic {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100vh;
+}
+
+div#naglowek, div#stopka {
+	flex: 0 0 250px;
+	width: 100%;
+}
+
+div#main {
+/* Atrybuty jako dziecka div#rodzic: */
+	flex: 1 1;
+	width: 100%;
+
+/* Atrybuty jako rodzic div#tekst i div#sidebar */
+	display: flex;
+	flex-direction: row;
+}
+
+div#tekst {
+	flex: 1 1 100%;
+}
+
+div#sidebar {
+	flex: 1 0 200px;
+}
+
+#naglowek {background-color: red;}
+#tekst {background-color: white;}
+#sidebar {background-color: blue;}
+#stopka {background-color: yellow;}
+
+
+@media only screen and (max-width: 500px) { 
+	div#main {
+		flex-direction: column;
+	}
+	div#sidebar {
+		order: -1;
+		flex: 0 0 100px;
+	}
+	div#naglowek, div#stopka {
+		flex: 0 0 200px;
+	}
+}
+
+</style>
+</head>
+<body>
+	<div id="rodzic">
+		<div id="naglowek"><h1>Nagłówek</h1></div>
+		<div id="main">
+			<div id="tekst">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium eleifend nisi et dictum. Nam eu enim nunc. Ut lacus lacus, convallis non tempor a, volutpat sed neque. Nullam fermentum nisl leo, et euismod ex ornare tempus. Curabitur pulvinar nibh id mattis viverra. Morbi rutrum velit urna, eget vulputate nunc gravida et. Aliquam laoreet urna non condimentum tempus. Pellentesque quis neque nec lectus euismod imperdiet. Nullam sagittis leo sit amet malesuada rutrum. Phasellus semper dui quis diam sagittis, et mollis quam eleifend. Fusce sagittis urna at placerat lobortis. Nunc urna velit, aliquet non arcu pharetra, convallis consequat magna.<br><br>
+
+Cras consectetur vehicula condimentum. Etiam ac fermentum diam, quis vehicula mi. Sed ut ipsum in est aliquet lobortis. Donec vehicula fringilla arcu in fringilla. In vehicula nunc a quam feugiat placerat. Proin a justo turpis. Vivamus ac malesuada justo. Vivamus fringilla nulla cursus, dapibus ante eu, posuere nibh. Nunc volutpat, neque pharetra mattis vehicula, leo risus volutpat dolor, id sodales purus justo ut ex. Nunc lectus arcu, vestibulum a sem quis, posuere faucibus purus. Morbi est enim, rhoncus in blandit id, accumsan in dui.<br><br>
+
+In at pretium neque. Aliquam mattis accumsan semper. Etiam nulla nisi, posuere eget neque id, scelerisque ultrices augue. Donec ultrices urna sit amet metus vulputate tincidunt. Nulla bibendum enim lectus, quis commodo ipsum euismod at. Proin accumsan, ipsum accumsan elementum venenatis, nisi nisi placerat leo, quis bibendum erat nisl non neque. Fusce lacinia purus at justo consequat ultrices. Morbi consequat, dolor at rhoncus tempus, libero ligula dictum lorem, a ornare enim ex et mi. Etiam elit dui, ullamcorper id congue in, interdum vel tellus.<br><br>
+
+Mauris non ipsum diam. Nullam tincidunt est sit amet blandit pulvinar. Nunc aliquam felis quis enim imperdiet, non posuere magna condimentum. Sed ut varius nisl. Suspendisse consequat sapien eu luctus rutrum. Nullam molestie enim vitae facilisis dictum. Fusce tincidunt elit eget facilisis tincidunt. Donec sodales luctus pellentesque. Cras rutrum augue nisl, sit amet ullamcorper erat pharetra eu. Etiam neque mi, imperdiet in posuere sed, porta vel nisl. Nulla facilisi. Etiam quis congue velit, eget sodales urna. Pellentesque iaculis libero in sem pretium, vel sollicitudin libero placerat. In ipsum lectus, porttitor quis urna eu, finibus malesuada nulla.<br><br>
+
+In nec justo consectetur, finibus odio et, placerat orci. Nam leo ex, placerat porttitor neque id, posuere ornare leo. Nulla gravida mauris sit amet sollicitudin dictum. In hac habitasse platea dictumst. Donec eu bibendum magna, non auctor ipsum. Aenean eget lacus vestibulum, vestibulum augue quis, mollis lorem. Morbi lacinia, ligula pellentesque tristique egestas, ante ante sollicitudin turpis, ut lobortis tortor metus id sem.<br><br>
+			</div>
+			<div id="sidebar">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium eleifend nisi et dictum. Nam eu enim nunc. Ut lacus lacus, convallis non tempor a, volutpat sed neque. Nullam fermentum nisl leo, et euismod ex ornare tempus. Curabitur pulvinar nibh id mattis viverra. Morbi rutrum velit urna, eget vulputate nunc gravida et. Aliquam laoreet urna non condimentum tempus. Pellentesque quis neque nec lectus euismod imperdiet. Nullam sagittis leo sit amet malesuada rutrum. Phasellus semper dui quis diam sagittis, et mollis quam eleifend. Fusce sagittis urna at placerat lobortis. Nunc urna velit, aliquet non arcu pharetra, convallis consequat magna.</div>
+		</div>
+		<div id="stopka"><h1>Stopka</h1></div>
+	</div>
+</body>
+</html>
