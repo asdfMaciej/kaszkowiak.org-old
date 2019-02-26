@@ -2,67 +2,91 @@
 <html lang="pl-PL">
 <head>
 	<meta charset="UTF-8">
-	<title>Strony na zawodowe</title>
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<title>wip</title>
 	<link rel="stylesheet" href="style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+	<script src="vue.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div style="text-align: center; height: 40vh; display: flex; align-items: center; justify-content: space-around; font-size: 2em">
-		<h2>Maciej Kaszkowiak </h2>
-	</div>
-	<div id="container">
-			
-			<a href="jeden/index.html">
-				<div class="bg">
-					<img src="1.png" alt="">
-					<div class="overlay">
-						<h2>Kręgle klasyczne</h2>
-						<p>Nowoczesny układ z paralaksą.</p>
-					</div>
-				</div>
-			</a>
-			
-			<a href="dwa/index.html">
-				<div class="bg">
-					<img src="2.png" alt="">
-					<div class="overlay">
-						<h2>Lorem ipsum</h2>
-						<p>Klasyczny układ artykułu.</p>
-					</div>
-				</div>
-			</a>
+	<div id="application">
+		<transition-group name="fade" tag="div" mode="out-in">	
+			<div class="ftopcenter vh10" key="switcher" id="top">
+				<switch-section v-for="(page, i) in pages" v-bind:section="page">
+					<span v-if="i != pages.length - 1" class="dot">•</span>
+				</switch-section>
+			</div>
 
-			<a href="trzy/index.html">
-				<div class="bg">
-					<img src="3.png" alt="">
-					<div class="overlay">
-						<h2>Coda serwis</h2>
-						<p>Trójkolumnowy, jednolity układ.</p>
-					</div>
+			<div class="ftopcenter vh90" v-if="currentPage == 'home'" key="home">
+				<div class="vh20">
+					<h1>Maciej Kaszkowiak</h1><br>
+					welcome to my homepage
 				</div>
-			</a>
+			</div>
 
-			<a href="cztery/index.html">
-				<div class="bg">
-					<img src="4.png" alt="">
-					<div class="overlay">
-						<h2>Pokemon GO</h2>
-						<p>Układ blogu o grach.</p>
-					</div>
+			<div class="vh90 scroll" v-if="currentPage == 'music'" key="music">
+				<div class="vh10 ftopcenter"><h2>listen log for 2019:<h2></div>
+				<album v-for="album in albums" v-bind:album="album" @use-album="useAlbum($event)"></album>
+			</div>
+
+			<div class="vh90 scroll" v-if="currentPage == 'album'" key="album">
+				<album-review v-bind:album="albums[albumIndex]"></album-review>
+			</div>
+
+			<div class="ftopcenter vh90 scroll fcol" style="justify-content: space-evenly" v-if="currentPage == 'contact'" key="contact">
+				<a href="https://github.com/asdfMaciej">
+					<img height="64" width="64" src="icons/github.svg">
+				</a><br>
+				<a href="mailto:maciej.kaszkowiak@gmail.com">
+					<img height="64" width="64" src="icons/gmail.svg">
+				</a><br>
+				<a href="https://steamcommunity.com/id/maciej01">
+					<img height="64" width="64" src="icons/steam.svg">
+				</a><br>
+				<a href="https://facebook.com/asdfMaciej">
+					<img height="64" width="64" src="icons/facebook.svg">
+				</a>
+			</div>
+		</transition-group>
+	</div>	
+
+	<script type="text/x-template" id="switch-section-template">
+		<span class="switch-section">
+			<v-link v-bind:href="section" style="color: white; text-decoration: none">
+				{{ section }}
+			</v-link>
+			<slot></slot>
+		</span>
+	</script>
+
+	<script type="text/x-template" id="album-template">
+		<v-link href="album" @click="onClick">
+			<div class="album">
+				<img v-bind:src="src()" class="albumimg">
+				<div class="overlay">
+					<h2>{{album.artist}}</h2>
+					<p>{{album.name}}</p>
 				</div>
-			</a>
+			</div>
+		</v-link>
+	</script>
 
-			<a href="poradnik/index.html">
-				<div class="bg">
-					<img src="5.png" alt="">
-					<div class="overlay">
-						<h2>Responsywna strona</h2>
-						<p>Poradnik o flexboxie.</p>
-					</div>
-				</div>
-			</a>
+	<script type="text/x-template" id="album-review-template">
+		<div class="review">
+			<img v-bind:src="src()">
+			<div class="tcenter" style="padding: 8px">
+				<h3>{{album.artist}}</h3>
+				<h1>{{album.name}}</h1>
+				{{album.review}}
+			</div>
+		</div>
+	</script>
 
-	</div>
+	<script type="text/x-template" id="v-link-template">
+		<a v-bind:href="href" v-on:click="go">
+			<slot></slot>
+		</a>
+	</script>
+
+	<script src="main.js"></script>
 </body>
 </html>
