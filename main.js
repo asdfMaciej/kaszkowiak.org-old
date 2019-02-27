@@ -28,6 +28,13 @@ Vue.component("album-review", {
 	}
 });
 
+Vue.component("post", {
+	template: "#post-template",
+	props: ['post'],
+	methods: {
+	}
+});
+
 Vue.component("v-link", {
 	template: "#v-link-template",
 	props: ["href"],
@@ -40,10 +47,11 @@ Vue.component("v-link", {
 	}
 });
 
+var lorem = "lorem ipsum".repeat(100);
 var app = new Vue({
 	el: '#application',
 	data: {
-		currentPage: "home",
+		currentPage: "blog",
 		pages: ["home", "projects", "blog", "music", "contact"],
 		albums: [
 			{index: 0, artist: "Tuzza", name: "Fino alla fine", genre: "Rap", review: "lorem ipsum".repeat(100)},
@@ -51,6 +59,10 @@ var app = new Vue({
 			{index: 2, artist: "Bedoes", name: "Squadshits (Bootleg)", genre: "Rap", review: "lorem ipsum".repeat(100)},
 			{index: 3, artist: "Sokół", name: "Wojtek Sokół", genre: "Rap", review: "lorem ipsum".repeat(100)},
 			{index: 4, artist: "Abradab", name: "Emisja Spalin", genre: "Rap", review: "lorem ipsum".repeat(100)}
+		],
+		posts: [
+			{index: 0, author: "Maciej Kaszkowiak", title: "creating a website with Vue", date: "2019-02-27", text: "Aaaaa<br>aaaaaaaaaa<br><b>testtesttest</b>"+lorem},
+			{index: 1, author: "Maciej Kaszkowiak", title: "longer title that allows me to tell you about scraping Facebook messages bla bla", date: "2019-02-25", text: "Aaaaa<br>aaaaaaaaaa<br><b>testtesttest</b>"+lorem}
 		],
 		albumIndex: 0
 	},

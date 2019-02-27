@@ -144,6 +144,23 @@ transition: .3s all;
 .scroll {
 	overflow: auto;
 }
+
+div.post {
+	padding: 16px;
+	background-color: #26547C;
+	color: #FFF;
+}
+
+div.post > .title {
+	margin-bottom: 12px;
+}
+div.post > .author {
+}
+div.post > .date {
+	font-style: italic;
+}
+
+
 /* 
 https://coolors.co/26547c-ef476f-ffd166-06d6a0-fffcf9
 https://coolors.co/05668d-028090-00a896-02c39a-f0f3bd

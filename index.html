@@ -46,6 +46,16 @@
 					<img height="64" width="64" src="icons/facebook.svg">
 				</a>
 			</div>
+
+			<div class="vh90 scroll" v-if="currentPage.substring(0,5) == 'post-'" key="album">
+				post post
+			</div>
+
+			<div class="vh90 scroll" v-if="currentPage == 'blog'" key="blog">
+				<div class="posts">
+					<post v-for="post in posts" v-bind:post="post"></post>
+				</div>
+			</div>
 		</transition-group>
 	</div>	
 
@@ -79,6 +89,16 @@
 				{{album.review}}
 			</div>
 		</div>
+	</script>
+
+	<script type="text/x-template" id="post-template">
+		<v-link v-bind:href="'post-'+post.index" class="post">
+			<div class="post">
+				<h3 class="title">{{post.title}}</h3>
+				<span class="author">{{post.author}}</span><br>
+				<span class="date">{{post.date}}</span>
+			</div>
+		</v-link>
 	</script>
 
 	<script type="text/x-template" id="v-link-template">
