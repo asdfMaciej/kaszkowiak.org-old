@@ -2,111 +2,66 @@
 <html lang="pl-PL">
 <head>
 	<meta charset="UTF-8">
-	<title>wip</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
-	<script src="vue.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Maciej Kaszkowiak</title>
 </head>
 <body>
-	<div id="application">
-		<transition-group name="fade" tag="div" mode="out-in">	
-			<div class="ftopcenter vh10" key="switcher" id="top">
-				<switch-section v-for="(page, i) in pages" v-bind:section="page">
-					<span v-if="i != pages.length - 1" class="dot">•</span>
-				</switch-section>
-			</div>
-
-			<div class="ftopcenter vh90" v-if="currentPage == 'home'" key="home">
-				<div class="vh20">
-					<h1>Maciej Kaszkowiak</h1><br>
-					welcome to my homepage
-				</div>
-			</div>
-
-			<div class="vh90 scroll" v-if="currentPage == 'music'" key="music">
-				<div class="vh10 ftopcenter"><h2>listen log for 2019:<h2></div>
-				<album v-for="album in albums" v-bind:album="album" @use-album="useAlbum($event)"></album>
-			</div>
-
-			<div class="vh90 scroll" v-if="currentPage == 'album'" key="album">
-				<album-review v-bind:album="albums[albumIndex]"></album-review>
-			</div>
-
-			<div class="ftopcenter vh90 scroll fcol" style="justify-content: space-evenly" v-if="currentPage == 'contact'" key="contact">
-				<a href="https://github.com/asdfMaciej">
-					<img height="64" width="64" src="icons/github.svg">
-				</a><br>
-				<a href="mailto:maciej.kaszkowiak@gmail.com">
-					<img height="64" width="64" src="icons/gmail.svg">
-				</a><br>
-				<a href="https://steamcommunity.com/id/maciej01">
-					<img height="64" width="64" src="icons/steam.svg">
-				</a><br>
-				<a href="https://facebook.com/asdfMaciej">
-					<img height="64" width="64" src="icons/facebook.svg">
-				</a>
-			</div>
-
-			<div class="vh90 scroll" v-if="currentPage.substring(0,5) == 'post-'" key="album">
-				post post
-			</div>
-
-			<div class="vh90 scroll" v-if="currentPage == 'blog'" key="blog">
-				<div class="posts">
-					<post v-for="post in posts" v-bind:post="post"></post>
-				</div>
-			</div>
-		</transition-group>
-	</div>	
-
-	<script type="text/x-template" id="switch-section-template">
-		<span class="switch-section">
-			<v-link v-bind:href="section" style="color: white; text-decoration: none">
-				{{ section }}
-			</v-link>
-			<slot></slot>
-		</span>
-	</script>
-
-	<script type="text/x-template" id="album-template">
-		<v-link href="album" @click="onClick">
-			<div class="album">
-				<img v-bind:src="src()" class="albumimg">
-				<div class="overlay">
-					<h2>{{album.artist}}</h2>
-					<p>{{album.name}}</p>
-				</div>
-			</div>
-		</v-link>
-	</script>
-
-	<script type="text/x-template" id="album-review-template">
-		<div class="review">
-			<img v-bind:src="src()">
-			<div class="tcenter" style="padding: 8px">
-				<h3>{{album.artist}}</h3>
-				<h1>{{album.name}}</h1>
-				{{album.review}}
-			</div>
-		</div>
-	</script>
-
-	<script type="text/x-template" id="post-template">
-		<v-link v-bind:href="'post-'+post.index" class="post">
-			<div class="post">
-				<h3 class="title">{{post.title}}</h3>
-				<span class="author">{{post.author}}</span><br>
-				<span class="date">{{post.date}}</span>
-			</div>
-		</v-link>
-	</script>
-
-	<script type="text/x-template" id="v-link-template">
-		<a v-bind:href="href" v-on:click="go">
-			<slot></slot>
-		</a>
-	</script>
-
-	<script src="main.js"></script>
+	
+	<header>
+		<a href="">Maciej Kaszkowiak</a>
+		<nav>
+			<a href="" class="selected">O mnie</a>
+			<a href="">Technologie</a>
+			<a href="">Projekty</a>
+			<a href="">Kontakt</a>
+		</nav>
+	</header>
+	
+	<section>
+		<h2>O mnie</h2>
+		<p>
+			Cześć! Nazywam się Maciej Kaszkowiak. Jestem programistą - specjalizuję się w tworzeniu stron i serwisów internetowych. Posiadam doświadczenie komercyjne. Pasjonuję się - stale się dokształcam i poszerzam swoją wiedzę.
+		</p>
+		<p>
+			W wolnych chwilach uprawiam sport i tworzę projekty open-source.
+		</p>
+		<h4>Tworzę strony internetowe w korzystnej cenie.</h4>
+		<p>
+			Utrzymuję stały kontakt z Klientem podczas każdego etapu realizowania strony. Indywidualnie dostosowuję wygląd, funkcjonalność i zastosowane technologie. Przywiązuję wagę do swojej pracy - nie tworzę stron „po łebkach”. Zapewniam profesjonalizm.
+		</p>
+		<p>
+			Owoce dotychczasowej pracy przekonają Państwa lepiej, niż zrobi to sam tekst. Udostępniłem Państwu wybrane <a href="">zrealizowane projekty</a> wraz ze zdjęciami i opisem realizacji. Za każdym kryje się osiągnięty cel. Zamieściłem również <a href="">listę technologii</a>, które znam i wykorzystuję.
+		</p>
+		<p>
+			Serdecznie zachęcam <a href="">do kontaktu</a> - z chęcią odpowiem na wszystkie pytania, wycenię Państwa projekt i oszacuję czas realizacji.
+		</p>
+		<p> -- opinie, listy rekomendacyjne -- </p>
+		<p> -- zdjecie -- </p>
+		<!--
+		<h4>Technologie</h4>
+		<p>
+			Dobrze posługuję się Javascriptem (ES6). Korzystam z Vue, znam jQuery. Wykorzystuję przydatne biblioteki (moment.js, Axios). Posiadam umiarkowaną znajomość node.js.
+		</p>
+		<p>
+			Znam PHP 7. Mam doświadczenie z Wordpressem, CakePHP. Znam wzorzec MVC i zasady REST API.
+		</p>
+		<p>
+			Korzystam z relacyjnych baz danych. Głównie MySQL, również SQLite, sporadycznie MSSQL. Jestem zaznajomiony z optymalizacją zapytań, normalizacją baz, indeksowaniem.
+		</p>
+		<p>
+			Posługuję się HTML5 oraz CSS3. Znam metodykę BEM oraz mam umiarkowane doświadczenie z SASS. Staram się optymalizować strony pod kątem wydajności i SEO - m.in. lazy-loading, ładowanie asynchroniczne, meta-tagi.
+		</p>
+		
+		<h4>Technologie poza witrynami</h4>
+		<p>
+			Znam Pythona 3. Jestem zaznajomiony z m.in. bs4, requests, selenium, Mam umiarkowaną znajomość Django i Flask.
+		</p>
+		<p>
+			Mam dość dobrą znajomość Photoshopa. Znam podstawy gita (jak pracować na branchach). Poruszam się po bashu i cmd oraz znam podstawy administracji serwerami.  
+		</p>
+		<p>
+			Miałem kilkukrotnie do czynienia z: C++, Rust, R, Java. Potrafię stworzyć aplikację na Androida.
+		</p>-->
+	</section>
 </body>
-</html>
