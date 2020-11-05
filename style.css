@@ -56,6 +56,13 @@ header {
 	justify-content: space-between;
 	margin: 16px 0 32px;
 }
+a {
+	color: #2E77FF;
+	text-decoration: none;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: black;
+}
 header a {
 	transition: color 200ms;
 	color: grey;
@@ -72,4 +79,18 @@ p {
 }
 .grey {
 	color: #a0a0a0;
+}
+.glightbox img {
+	max-width: 120px;
+	max-height: 90px;
+}
+.project-showcase {
+
+    width: 100%;
+    height: 100vh;
+    background: url(/img/szybkarolka/1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
