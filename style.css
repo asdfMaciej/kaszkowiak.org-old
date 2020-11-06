@@ -84,6 +84,19 @@ p {
 	max-width: 120px;
 	max-height: 90px;
 }
+.hug {
+	margin-top: -1rem;
+	display: block;
+	margin-bottom: 2rem;
+}
+.project {
+	margin: 0 0 2rem 0;
+	border-bottom: 1px solid #2E77FF;
+}
+.project .title {
+	margin-bottom: 0.8rem;
+}
+
 .project-showcase {
 
     width: 100%;
